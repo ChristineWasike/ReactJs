@@ -1,27 +1,25 @@
 import React from 'react';
-
 class App extends React.Component {
-    render() {
-        // Working on the conditional statements
-        var i = 1;
+    constructor() {
+        super();
 
-        // Styling
-        var myStyle = {
-            fontSize: 50,
-            color: 'red',
-            fontFamily: 'Monaco'
+        this.state = {
+            data: []
         }
+
+        this.setStateHandler = this.setStateHandler.bind(this);
+    };
+    setStateHandler() {
+        var item = "setState..."
+        var myArray = this.state.data.slice();
+        myArray.push(item);
+        this.setState({data: myArray})
+    };
+    render() {
         return (
             <div>
-                <h1 style = {myStyle}>Welcome to the world of coding</h1>
-                <h2>A whole new world</h2>
-                <p data-myAttribute="somevalue">I can show you the world, take you wonder by wonder. Over mountains and under on a magic carpet ride. </p>
-
-                {/* Quick math */}
-                <p>{4 + 4}</p>
-
-                 {/* Working on the conditional statements i.e Ternary expressions*/}
-                <p>{i == 1 ? 'True! :)' : 'False:('}</p>
+                <button onClick={this.setStateHandler}>SET STATE</button>
+                <h4>State Array: {this.state.data}</h4>
             </div>
         );
     }
